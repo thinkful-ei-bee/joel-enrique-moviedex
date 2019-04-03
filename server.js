@@ -23,17 +23,18 @@ app.use(function validateBearerToken(req, res, next) {
 })
 
 app.get('/movie', function handleGetMovie(req, res) {
-  let response = MOVIES.json;
+  let response = MOVIES;
+  //let response;
 
-  if(!req.query.name || !req.query.genre || !req.query.country || !req.query.avg_vote) {
+  if(!req.query.name && !req.query.genre && !req.query.country && !req.query.avg_vote) {
     response = 'Please search by "?name=, "?genre=", "?country=" or "?avg_vote="';
   }
 
-  // filter our pokemon by name if name query param is present
+  // filter our movie by name if name query param is present
   if (req.query.name) {
-    response = response.filter(movie =>
-      // case insensitive searching
-      movie.name.toLowerCase().includes(req.query.name.toLowerCase())
+    response = response.filter( movie => {
+        return movie.film_title.toLowerCase().includes(req.query.name.toLowerCase())
+      }
     )
   }
 
