@@ -38,12 +38,12 @@ app.get('/movie', function handleGetMovie(req, res) {
     )
   }
 
-  // filter our pokemon by type if type query param is present
-  // if (req.query.type) {
-  //   response = response.filter(pokemon =>
-  //     pokemon.type.includes(req.query.type)
-  //   )
-  // }
+  // filter our movie by genre if genre query param is present
+  if (req.query.genre) {
+    response = response.filter(movie =>
+      movie.genre.includes(req.query.genre)
+    )
+  }
 
   res.json(response)
 })
