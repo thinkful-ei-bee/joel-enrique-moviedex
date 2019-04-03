@@ -25,6 +25,10 @@ app.use(function validateBearerToken(req, res, next) {
 app.get('/movie', function handleGetMovie(req, res) {
   let response = MOVIES.json;
 
+  if(!req.query.name || !req.query.genre || !req.query.country || !req.query.avg_vote) {
+    response = 'Please search by "?name=, "?genre=", "?country=" or "?avg_vote="';
+  }
+
   // filter our pokemon by name if name query param is present
   if (req.query.name) {
     response = response.filter(movie =>
