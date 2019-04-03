@@ -32,9 +32,8 @@ app.get('/movie', function handleGetMovie(req, res) {
 
   // filter our movie by name if name query param is present
   if (req.query.name) {
-    response = response.filter( movie => {
-        return movie.film_title.toLowerCase().includes(req.query.name.toLowerCase())
-      }
+    response = response.filter( movie => 
+      movie.film_title.toLowerCase().includes(req.query.name.toLowerCase())
     )
   }
 
@@ -49,6 +48,13 @@ app.get('/movie', function handleGetMovie(req, res) {
   if (req.query.country) {
     response = response.filter(movie =>
       movie.country.includes(req.query.country)
+    )
+  }
+
+  // filter our movie by avg_vote if avg_vote query param is present
+  if (req.query.avg_vote) {
+    response = response.filter(movie => 
+      movie.avg_vote >= req.query.avg_vote
     )
   }
 
