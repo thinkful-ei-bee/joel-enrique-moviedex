@@ -13,6 +13,9 @@
     "url": "git+https://github.com/thinkful-ei-bee/joel-enrique-moviedex.git"
   },
   "keywords": [],
+  "engines": {
+    "node": "10.11.0"
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {
