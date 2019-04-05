@@ -6,8 +6,9 @@ const helmet = require('helmet')
 const MOVIES = require('./movies.json')
 
 const app = express()
+const morganSetting = process.env.NODE_ENV === 'production' ? 'tiny' : 'common'
 
-app.use(morgan('dev'))
+app.use(morgan(morganSetting))
 app.use(helmet())
 app.use(cors())
 
